@@ -42,8 +42,8 @@ function Navbar() {
         </div>
         <div className='flex items-center'>
           {
-            navItems.map((data) => (
-              <div className='flex mt-2 ml-12 text-2xl  '>
+            navItems.map((data,i) => (
+              <div className='flex mt-2 ml-12 text-2xl  ' key={i}>
                {data.image}
                 <p className='text-base font-medium text-gray-600 ml-1 '>{data.name}</p>
                 </div>
