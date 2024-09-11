@@ -1,28 +1,29 @@
-import React, {useState,useEffect} from 'react'
+import React, {useState} from 'react'
+import RestaurantCard from './RestaunrantCard';
 
-function TopRestaurant() {
+function TopRestaurant({data}) {
    const [value, SetValue] = useState(0);
-    const[data, setData] = useState([]);
+    // const[data, setData] = useState([]);
     
    console.log(value);
 
    function handleNext(){
-    SetValue((prev) => prev + 50 )
+    SetValue((prev) => prev + 50 );
    }
    
    function handlePrev(){
-    SetValue((prev) => prev - 50 )
+    SetValue((prev) => prev - 50 );
    }
-   async function fetchData(){
-    // const url=("https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.9690247&lng=72.8205292&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
-    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.9690247&lng=72.8205292&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
-    const result = await data.json() ;
-    console.log(result?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    setData(result?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-  }
-  useEffect(() => {
-    fetchData()
-  }, [])   
+  //  async function fetchData(){
+  //   // const url=("https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.9690247&lng=72.8205292&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+  //   const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.9690247&lng=72.8205292&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+  //   const result = await data.json() ;
+  //   console.log(result?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+  //   setData(result?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+  // }
+  // useEffect(() => {
+  //   fetchData()
+  // }, [])   
 
   return (
     <div className="mt-14">
@@ -37,13 +38,15 @@ function TopRestaurant() {
           </div>
           </div>
         </div>
-        <div className={`flex mt-4 gap-5 w-full duration-300`} style={{translate : `-${value}%`}}>
+        <div className={`flex mt-4 gap-5 w-full duration-300`} style={{ translate : `-${value}%`}}>
             {
-         data.map(({info}) => (
-
-            <div className='min-w-[295px] h-[185px] '>
-          <img className='w-full h-full rounded-xl object-cover' src={"https://media-assets.swiggy.com/swiggy/image/upload/" + info?.cloudinaryImageId} alt=''/>
+         data.map(({ info }) => (
+            <div className='hover:scale-95 duration-300' key={info.id}>
+              <RestaurantCard {...info} />
+       
+       
         </div>
+        
          ))
         }
       </div>
