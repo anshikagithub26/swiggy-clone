@@ -1,11 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-// import restaurantMenu from './RestaurantMenu'
 
 function RestaurantCard(info) {
-  // console.log(info);
+  // console.log(info.link) link.split("/").at(-1);
   return (
-    <Link to={"/restaurantMenu"}>
+    <Link to={`/restaurantMenu/${info.id}`}>
       <div className='min-w-[295px] h-[185px] relative '>
         <img className='w-full h-full rounded-xl object-cover' src={"https://media-assets.swiggy.com/swiggy/image/upload/" + info?.cloudinaryImageId} alt='' />
         <div className='bg-gradient-to-t from-black from-1% to-transparent to-40% rounded-2xl w-full h-full absolute top-0 '></div>

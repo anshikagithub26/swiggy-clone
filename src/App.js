@@ -9,7 +9,7 @@ function App () {
    <Routes>
     <Route path="/" element={<Navbar/>}>
     <Route path="/" element={<Body/>}/>
-    <Route path='/restaurantMenu' element={<RestaurantMenu/>}/>
+    <Route path='/restaurantMenu/:id' element={<RestaurantMenu/>}/>
     </Route>
     
    

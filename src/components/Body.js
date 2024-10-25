@@ -10,7 +10,7 @@ function Body() {
 
   async function fetchData(){
     // const url=("https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.9690247&lng=72.8205292&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
-    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.9690247&lng=72.8205292&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=30.73390&lng=76.78890&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
     const result = await data.json() ;
     console.log(result?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     SetTopRestaurantData(result?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
@@ -22,12 +22,13 @@ function Body() {
 
 
   return (
+  
     <div className='w-full '>
 
         <div className='w-[75%] mx-auto mt-3 shadow-md  overflow-hidden'>
           <OnYourMind data={OnYourMindData}/>
           <TopRestaurant data={topRestaurantData}/>
-          <OnlineFoodDelivery data={topRestaurantData}/>
+          <OnlineFoodDelivery data={topRestaurantData}/> 
     </div>
     </div>
   )
