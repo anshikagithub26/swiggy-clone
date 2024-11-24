@@ -9,6 +9,14 @@ let mainId = id.split("-").at(-1)
       const [menuData, setMenuData] = useState([ ])
       const [discountData, setDiscountData] = useState([ ])
       const [resInfo, setResInfo] = useState([ ])
+      const [value, setValue] = useState(0);
+
+       function handleNext(){
+
+       }
+       function handlePrev(){
+        
+       }
 
     console.log(resInfo);
     
@@ -55,13 +63,40 @@ let mainId = id.split("-").at(-1)
           </div>
           {/* <hr/> */}
         </div>
+        
          </div>
      </div>
-     </div>
+     <div className='w-full'>
+     <div className='flex justify-between mt-8 '>
+            <h1 className='font-bold text-xl'>Deals for you</h1>
+     <div className='flex gap-3'>
+              <div onClick={handlePrev} className={` cursor-pointer rounded-full w-9 h-9 flex justify-center items-center ` +(value <=0 ? "bg-gray-100" : "bg-gray-200")}>
+            <i className={`fi text-2xl mt-1 fi-rr-arrow-small-left ` + (value <=0 ? "text-gray-300" : "text-gray-800")}></i>
+            </div>
+            <div onClick={handleNext} className={` cursor-pointer rounded-full w-9 h-9 flex justify-center items-center ` +(value >= 186 ? "bg-gray-100" : "bg-gray-200")} >
+               <i className={`fi text-2xl mt-1 fi-rr-arrow-small-right ` + (value >= 186 ? "text-gray-300" : "text-gray-800")}></i>
+            </div>
+            </div>
+            </div>
+            {
+              discountData.map((data) => (
+             <Discount data={data}/>
+              ))
        
+            }
+     </div>
+       </div>
     </div>
 
   )
 }
+  
+ function Discount({data : {info : {header, offerLogo, couponCode}}}){
+  // console.log(info);
+  return (
+   <div> aj sb kuch theek h</div>
 
+   
+  )
+ }
 export default RestaurantMenu
