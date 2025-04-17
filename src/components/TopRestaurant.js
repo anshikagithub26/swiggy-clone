@@ -40,9 +40,9 @@ function TopRestaurant({data}) {
         </div>
         <div className={`flex mt-4 gap-5 w-full duration-300`} style={{ translate : `-${value}%`}}>
             {
-         data.map(({ info }) => (
+         data.map(({ info, cta : {link} }) => (
             <div className='hover:scale-95 duration-300' key={info.id}>
-              <RestaurantCard {...info} />
+              <RestaurantCard {...info} link={link}/>
        
        
         </div>
